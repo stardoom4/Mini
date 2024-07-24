@@ -281,3 +281,12 @@ function openFile(event) {
         reader.readAsText(file);
     }
 }
+// Prevent default drag-and-drop behavior and handle it appropriately
+document.getElementById('editor').addEventListener('dragover', function(event) {
+    event.preventDefault();
+});
+
+document.getElementById('editor').addEventListener('drop', function(event) {
+    event.preventDefault();
+    // You can add custom handling for dropped files here if needed
+});
