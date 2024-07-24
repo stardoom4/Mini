@@ -257,6 +257,10 @@ function insertTable() {
         sel.addRange(newRange);
     }
 }
+
+// Load content on page load
+window.onload = loadContent;
+
 // Function to delete the table
 function deleteTable() {
     const selection = window.getSelection();
@@ -288,5 +292,17 @@ document.getElementById('editor').addEventListener('dragover', function(event) {
 
 document.getElementById('editor').addEventListener('drop', function(event) {
     event.preventDefault();
-    // You can add custom handling for dropped files here if needed
+    // Ensure that no file content is inserted
+    const dt = event.dataTransfer;
+    if (dt.items) {
+        // Use DataTransferItemList interface to remove files
+        for (let i = 0; i < dt.items.length; i++) {
+            if (dt.items[i].kind === 'file') {
+                dt.items.remove(i);
+            }
+        }
+    } else {
+        // Use DataTransfer interface to remove files
+        dt.clearData();
+    }
 });
