@@ -285,12 +285,12 @@ function openFile(event) {
         reader.readAsText(file);
     }
 }
-// Prevent default drag-and-drop behavior and handle it appropriately
-document.getElementById('editor').addEventListener('dragover', function(event) {
+// Prevent default drag-and-drop behavior globally
+document.addEventListener('dragover', function(event) {
     event.preventDefault();
 });
 
-document.getElementById('editor').addEventListener('drop', function(event) {
+document.addEventListener('drop', function(event) {
     event.preventDefault();
     // Ensure that no file content is inserted
     const dt = event.dataTransfer;
@@ -306,3 +306,9 @@ document.getElementById('editor').addEventListener('drop', function(event) {
         dt.clearData();
     }
 });
+
+// Change the theme
+function changeTheme(event) {
+    const theme = event.target.value;
+    document.documentElement.className = theme;
+}
