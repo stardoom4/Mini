@@ -2,12 +2,11 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Mini</title>
+  <title>Mini</title>
   <link rel="stylesheet" href="styl/style.css">
-
+  <link rel="stylesheet" type="text/css" href="styl/theme.css"/>
 </head>
 <body>
-<!-- partial:index.partial.html -->
 <div class="editor-container">
         <div class="toolbar">
             <div class="dropdown">
@@ -121,8 +120,13 @@
             </ul>
         </div>
     </div>
-<!-- partial -->
-  <script  src="func/script.js"></script>
-
+  <script>
+    const theme = new Theme();
+    theme.install(document.body);
+    theme.start();
+    theme.onLoad = callback
+  </script>
+  <script src="func/script.js"></script>
+  <script type="text/javascript" src="func/theme.js"></script>
 </body>
 </html>
