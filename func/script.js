@@ -80,6 +80,9 @@ function htmlToMarkdown(html) {
         .replace(/<li>/gi, '1. ')
         .replace(/<\/li>/gi, '\n')
         .replace(/<a href="(.*?)">(.*?)<\/a>/gi, '[$2]($1)')
+        .replace(/&lt;/g, '<')  // Decode HTML entities
+        .replace(/&gt;/g, '>')  // Decode HTML entities
+        .replace(/&amp;/g, '&') // Decode HTML entities
         .replace(/<[^>]+>/g, ''); // Remove remaining HTML tags
 }
 
